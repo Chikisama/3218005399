@@ -153,4 +153,5 @@ Total | 合计 | 550 | 545
 
 [文本相似度计算方法](https://blog.csdn.net/Gamer_gyt/article/details/102916791?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522160086497719724839219253%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=160086497719724839219253&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-4-102916791.nonecase&utm_term=%E6%96%87%E6%9C%AC%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97&spm=1018.2118.3001.4187)
 
+[TF-IDF与余弦相似性的应用](http://www.ruanyifeng.com/blog/2013/03/cosine_similarity.html)
 
