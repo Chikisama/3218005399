@@ -4,7 +4,7 @@ import re #正则表达式库
 import collections #词频统计库
  
  #读取文本文件
-def get_contents(path):
+def read(path):
     data = ''
     file = open(path, 'r', encoding='UTF-8') #只读
     line = file.readline()
@@ -22,8 +22,9 @@ def text_clean(data):
     newtext = jieba.lcut(data)  #分词
     return newtext
 
+
  #余弦公式计算文本相似度
-def cos_calc_similarity(text1,text2):
+def cos_sim(text1,text2):
     texts=[text1,text2]
     dictionary = gensim.corpora.Dictionary(texts)
     corpus = [dictionary.doc2bow(text) for text in texts] #只保留英文a-zA-z、数字0-9和中文\u4e00-\u9fa5的结果。
@@ -36,14 +37,14 @@ if __name__ == '__main__':
     path1 = r'C:\Users\Chiki\Desktop\homework\text\orig.txt'  #论文原文的文件的绝对路径 作业要求
     path2 = r'C:\Users\Chiki\Desktop\homework\text\orig_add.txt'  #抄袭版论文的文件的绝对路径
     save_path = r'C:\Users\Chiki\Desktop\homework\rate\save.txt'   #输出结果绝对路径
-    data1 = get_contents(path1)
-    data2 = get_contents(path2)
+    data1 = read(path1)
+    data2 = read(path2)
     text1 = text_clean(data1)
     text2 = text_clean(data2)
-    similarity = cos_calc_similarity(text1, text2)
-    print("文章相似度： %.4f"%similarity)
+    cos_result = cos_sim(text1, text2)
+    print("文章相似度： %.4f"%cos_result)
     #将相似度结果写入指定文件
     file = open(save_path, 'w', encoding="utf-8") #只写
-    file.write("文章相似度： %.4f"%similarity)
+    file.write("文章相似度： %.4f"%cos_result)
     file.close()
  
