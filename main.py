@@ -4,22 +4,22 @@ import math
 
 #读取文本文件
 def read_text(path):
-    data = ''
-    file = open(path, 'r', encoding='UTF-8') #只读
-    line = file.readline()
-    while line:
-        data += line
-        line = file.readline()
-    file.close()
-    return data
+	data = ''
+	file = open(path, 'r', encoding='UTF-8') #只读
+	line = file.readline()
+	while line:
+		data += line
+		line = file.readline()
+	file.close()
+	return data
 
- #文本清洗+分词
+#文本清洗+分词
 def text_clean(data):
-    newtext = []
-    pattern = re.compile(u"[^a-zA-Z0-9\u4e00-\u9fa5]")   #定义正则表达式匹配模式
-    data = pattern.sub("",data)  # 只保留英文a-zA-z、数字0-9和中文\u4e00-\u9fa5的结果。	去除标点符号
-    newtext = [i for i in jieba.cut(data, cut_all=False) if i != '']  #分词
-    return newtext
+	newtext = []
+	pattern = re.compile(u"[^a-zA-Z0-9\u4e00-\u9fa5]")   #定义正则表达式匹配模式
+	data = pattern.sub("",data)  # 只保留英文a-zA-z、数字0-9和中文\u4e00-\u9fa5的结果。	去除标点符号
+	newtext = [i for i in jieba.cut(data, cut_all=False) if i != '']  #分词
+	return newtext
 
 #列出所有词，将listA和listB放在一个set中
 #余弦公式计算文本相似度
@@ -45,11 +45,7 @@ def cos(newtext1,newtext2):
 		sum += text1_cut_index[i] * text2_cut_index[i]
 		sq1 += pow(text1_cut_index[i], 2)
 		sq2 += pow(text2_cut_index[i], 2)
-	
-	try:
 		cos_result = round(float(sum) / (math.sqrt(sq1) * math.sqrt(sq2)), 2)
-	except ZeroDivisionError:
-		cos_result = 0.0
 	return cos_result
 
 if __name__ == '__main__':
